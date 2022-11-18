@@ -1,0 +1,63 @@
+{
+	"pump_1": {
+		"name": "Pump 1",
+		"pin": 17, 
+		"value": null
+	},
+	"pump_2": {
+		"name": "Pump 2",
+		"pin": 27, 
+		"value": null
+	},
+	"pump_3": {
+		"name": "Pump 3",
+		"pin": 22, 
+		"value": null
+	},
+	"pump_4": {
+		"name": "Pump 4",
+		"pin": 23, 
+		"value": null
+	},
+	"pump_5": {
+		"name": "Pump 5",
+		"pin": 24, 
+		"value": null
+	},
+	"pump_6": {
+		"name": "Pump 6",
+		"pin": 25, 
+		"value": null
+	},
+	"pump_7": {
+		"name": "Pump 7",
+		"pin": 25, 
+		"value": null
+	},
+	"pump_8": {
+		"name": "Pump 8",
+		"pin": 25, 
+		"value": null
+	},
+	"pump_9": {
+		"name": "Pump 9",
+		"pin": 25, 
+		"value": null
+	},
+	"pump_10": {
+		"name": "Pump 10",
+		"pin": 25, 
+		"value": null
+	},
+	"pump_11": {
+		"name": "Pump 11",
+		"pin": 25, 
+		"value": null
+	},
+	"pump_12": {
+		"name": "Pump 12",
+		"pin": 25, 
+		"value": null
+	}
+	
+}
