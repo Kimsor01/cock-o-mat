@@ -194,7 +194,7 @@ mixes = [
     {
         "name": "Save Drive To Me",
         "ingredients": {"osaft": 60, "lime": 30, "grena": 20, "pine": 100},
-        "tpye": "Fahrer",
+        "type": "Fahrer",
         "mixable": "True"
     },
     {

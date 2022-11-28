@@ -27,7 +27,7 @@
 	"valve_6": {
 		"name": "Valve 6",
 		"pin": 25, 
-		"value": null
+		"value": "vodka"
 	},
 	"valve_7": {
 		"name": "Valve 7",

@@ -4,13 +4,14 @@ import pprint
 from booze import bottles, mixes
 
 
-class Cockmixer:
+class cockmixer:
     def __init__(self):
         self.running = False  # what is dis for?
 
         #  setup screen, pins, leds etc.
-        self.valve_configuration = Cockmixer.readValveConfig()
-        # for valve in self.valve_configuration.keys():
+        self.valve_configuration = self.readValveConfig()
+        self.availDrinks = []
+        self.filterMixes()
         # pin.setup(self.valve_configuration[valve]["pin"],pin.out, initial = pin.high)
 
     @staticmethod
@@ -33,4 +34,4 @@ class Cockmixer:
             if presentIng != len(ingred.keys()):
                 i["mixable"] = "False"
             else:
-                pprint.pprint(i["name"])
+                self.availDrinks.append(i)
