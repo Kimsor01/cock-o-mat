@@ -1,7 +1,7 @@
 import json
 import pprint
 
-from booze import bottles, mixes
+from booze import mixes
 
 
 class cockmixer:
@@ -24,8 +24,7 @@ class cockmixer:
 
     def filterMixes(self):
         for i in mixes:
-            attri = {"ingredients": i["ingredients"]}
-            ingred = attri["ingredients"]
+            ingred = {"ingredients": i["ingredients"]}["ingredients"]
             presentIng = 0
             for ing in ingred.keys():
                 for v in self.valve_configuration.keys():
@@ -35,3 +34,17 @@ class cockmixer:
                 i["mixable"] = "False"
             else:
                 self.availDrinks.append(i)
+
+    def GoToWork(self, drink, aua):
+        for i in self.availDrinks:
+            if i["name"] == drink:
+                ingredients = {"ingredients": i["ingredients"]}["ingredients"]
+                for ing in ingredients.keys():
+                    for v in self.valve_configuration.keys():
+                        if ing == self.valve_configuration[v]["value"]:
+                            valnum =int(''.join(filter(str.isdigit, v)))
+                            amount = ingredients[ing]
+                            if aua and int(v.isdigit()) < 7:
+                                amount = amount * 2
+                            print(v)
+                            print("Pin " + str(self.valve_configuration[v]["pin"]) + "-" + str(amount) + "ml -" + ing)

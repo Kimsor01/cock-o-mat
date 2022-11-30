@@ -1,5 +1,6 @@
 from booze import bottles
 
+
 class controller:
     def __init__(self, window, cmix):
         self.window = window
@@ -7,43 +8,51 @@ class controller:
 
     def setupControls(self):
         for i in self.cmix.availDrinks:
-            self.window.listWidget.addItem(i["name"])
-            if self.window.comboBox.findText(i["type"]) != -1:
+            self.window.listDrinkSelection.addItem(i["name"])
+            if self.window.cmbTypes.findText(i["type"]) != -1:
                 continue
-            self.window.comboBox.addItem(i["type"])
-        self.window.comboBox.model().sort(0)
+            self.window.cmbTypes.addItem(i["type"])
+        self.window.cmbTypes.model().sort(0)
 
     def filterList(self):
-        self.window.listWidget.clear()
-        self.window.listWidget_2.clear()
-        if self.window.comboBox.currentText() == "-":
+        self.window.listDrinkSelection.clear()
+        self.window.listDrinkDetails.clear()
+        self.window.labelDrink.clear()
+        if self.window.cmbTypes.currentText() == "-":
             for i in self.cmix.availDrinks:
-                self.window.listWidget.addItem(i["name"])
+                self.window.listDrinkSelection.addItem(i["name"])
         else:
             for i in self.cmix.availDrinks:
-                if i["type"] == self.window.comboBox.currentText():
-                    self.window.listWidget.addItem(i["name"])
+                if i["type"] == self.window.cmbTypes.currentText():
+                    self.window.listDrinkSelection.addItem(i["name"])
 
     def showAll(self):
-        self.window.listWidget.clear()
-        self.window.listWidget_2.clear()
-        idx = self.window.comboBox.findText("-")
-        if idx != -1:
-            self.window.comboBox.setCurrentIndex(idx)
-        for i in self.cmix.availDrinks:
-            self.window.listWidget.addItem(i["name"])
+        if self.window.cmbTypes.currentText() == '-':
+            pass
+        else:
+            self.window.listDrinkSelection.clear()
+            self.window.listDrinkDetails.clear()
+            self.window.labelDrink.clear()
+            idx = self.window.cmbTypes.findText("-")
+            if idx != -1:
+                self.window.cmbTypes.setCurrentIndex(idx)
 
     def showDetails(self):
-        clicked = self.window.listWidget.currentItem()
+        self.window.listDrinkDetails.clear()
+        self.window.cbAua.setChecked(False)
+        clicked = self.window.listDrinkSelection.currentItem()
         name = clicked.text()
         for i in self.cmix.availDrinks:
             if name == i["name"]:
-                self.window.listWidget_2.addItem(i["name"] + " - " + i["type"])
+                self.window.labelDrink.setText(i["name"])
                 ingredients = {"ingredients": i["ingredients"]}["ingredients"]
                 for ing in ingredients.keys():
                     for b in bottles:
-                        if b["value"]==ing:
+                        if b["value"] == ing:
                             line = b["name"] + ": " + str(ingredients[ing]) + "ml"
-                            self.window.listWidget_2.addItem(line)
+                            self.window.listDrinkDetails.addItem(line)
 
-
+    def pour(self):
+        drink = self.window.labelDrink.text()
+        aua = self.window.cbAua.isChecked()
+        self.cmix.GoToWork(drink, aua)

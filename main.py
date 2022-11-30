@@ -13,9 +13,10 @@ ui_window = Ui_cockomat()
 ui_window.setupUi(window)
 kontrollörres = controller(ui_window, cmix)
 kontrollörres.setupControls()
-ui_window.comboBox.currentTextChanged.connect(kontrollörres.filterList)
-ui_window.pushButton.pressed.connect(kontrollörres.showAll)
-ui_window.listWidget.clicked.connect(kontrollörres.showDetails)
+ui_window.cmbTypes.currentTextChanged.connect(kontrollörres.filterList)
+ui_window.pbShowAll.clicked.connect(kontrollörres.showAll)
+ui_window.listDrinkSelection.clicked.connect(kontrollörres.showDetails)
+ui_window.pbPourDrink.clicked.connect(kontrollörres.pour)
 
 window.show()
 
