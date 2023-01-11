@@ -20,13 +20,13 @@ bottles = [
 mixes = [
     # ingredient amount in "ml"
     # longdrinks should be around 350-400ml
-    # Langtrink = Longdrink, SchwanzSchwanz = Cocktails, Fahrer = Alkoholfrei
+    # Langtrink = Longdrink, SchwanzSchwanz = Cocktails, Fahrer = Alkoholfrei, Shooter = ???
 
     # recipes might use dashes = 1 ml, gotta try it
     {
         "name": "A Kick in the Crotch",
         "ingredients": {"vodka": 20, "blue": 15, "cran": 15},
-        "type": "Shooter"  # to be replaced with dumb german expression
+        "type": "Shooter"
     },
     {
         "name": "Ananascocktail",
@@ -166,7 +166,7 @@ mixes = [
     {
         "name": "Save Drive To Me",
         "ingredients": {"osaft": 60, "lime": 30, "grena": 20, "pine": 100},
-        "tpye": "Fahrer"
+        "type": "Fahrer"
     },
     {
         "name": "Schicksalsschlag",

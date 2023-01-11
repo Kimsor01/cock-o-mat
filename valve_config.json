@@ -1,0 +1,63 @@
+{
+	"valve_1": {
+		"name": "Valve 1",
+		"pin": 17, 
+		"value": "teq"
+	},
+	"valve_2": {
+		"name": "Valve 2",
+		"pin": 27, 
+		"value": "cacha"
+	},
+	"valve_3": {
+		"name": "Valve 3",
+		"pin": 22, 
+		"value": "rum"
+	},
+	"valve_4": {
+		"name": "Valve 4",
+		"pin": 23, 
+		"value": "peach"
+	},
+	"valve_5": {
+		"name": "Valve 5",
+		"pin": 24, 
+		"value": "blue"
+	},
+	"valve_6": {
+		"name": "Valve 6",
+		"pin": 25, 
+		"value": "vodka"
+	},
+	"valve_7": {
+		"name": "Valve 7",
+		"pin": 25, 
+		"value": "osaft"
+	},
+	"valve_8": {
+		"name": "Valve 8",
+		"pin": 25, 
+		"value": "grena"
+	},
+	"valve_9": {
+		"name": "Valve 9",
+		"pin": 25, 
+		"value": "lime"
+	},
+	"valve_10": {
+		"name": "Valve 10",
+		"pin": 25, 
+		"value": "pine"
+	},
+	"valve_11": {
+		"name": "Valve 11",
+		"pin": 25, 
+		"value": "cola"
+	},
+	"valve_12": {
+		"name": "Valve 12",
+		"pin": 25, 
+		"value": "cran"
+	}
+	
+}
