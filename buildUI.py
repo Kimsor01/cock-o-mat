@@ -40,6 +40,7 @@ class controller:
     def showDetails(self):
         self.window.listDrinkDetails.clear()
         self.window.cbAua.setChecked(False)
+        lines = []
         clicked = self.window.listDrinkSelection.currentItem()
         name = clicked.text()
         for i in self.cmix.availDrinks:
@@ -50,9 +51,31 @@ class controller:
                     for b in bottles:
                         if b["value"] == ing:
                             line = b["name"] + ": " + str(ingredients[ing]) + "ml"
-                            self.window.listDrinkDetails.addItem(line)
+                            lines.append(line)
+                            #self.window.listDrinkDetails.addItem(line)
+        for line in sorted(lines):
+            self.window.listDrinkDetails.addItem(line)
+        self.window.listDrinkDetails.addItem("")
+        for d in self.cmix.drinkStats.keys():
+            if d == name:
+                line = "Bestellungen: " + str(self.cmix.drinkStats[d]["quantity"])
+                self.window.listDrinkDetails.addItem(line)
+                line = "davon mit extra Umdrehungen: " + str(self.cmix.drinkStats[d]["doubled"])
+                self.window.listDrinkDetails.addItem(line)
+
+    def updateDetails(self, drink):
+        rows = self.window.listDrinkDetails.count()
+        self.window.listDrinkDetails.takeItem(rows-1)
+        self.window.listDrinkDetails.takeItem(rows-2)
+        for d in self.cmix.drinkStats.keys():
+            if d == drink:
+                line = "Bestellungen: " + str(self.cmix.drinkStats[d]["quantity"])
+                self.window.listDrinkDetails.addItem(line)
+                line = "davon mit extra Umdrehungen: " + str(self.cmix.drinkStats[d]["doubled"])
+                self.window.listDrinkDetails.addItem(line)
 
     def pour(self):
         drink = self.window.labelDrink.text()
         aua = self.window.cbAua.isChecked()
         self.cmix.GoToWork(drink, aua)
+        self.updateDetails(drink)

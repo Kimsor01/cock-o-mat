@@ -11,6 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from qrainbowstyle import load_stylesheet
 
+
 class Ui_cockomat(object):
     def setupUi(self, cockomat):
         cockomat.setObjectName("cockomat")
@@ -94,7 +95,7 @@ class Ui_cockomat(object):
         self.cbAua = QtWidgets.QCheckBox(self.centralwidget)
         self.cbAua.setGeometry(QtCore.QRect(470, 420, 181, 31))
         self.cbAua.setObjectName("cbAua")
-        cockomat.setCentralWidget(self.centralwidget)
+        # cockomat.setCentralWidget(self.centralwidget)
 
         # changing the styles a bit
 
@@ -120,7 +121,7 @@ class Ui_cockomat(object):
         _translate = QtCore.QCoreApplication.translate
         cockomat.setWindowTitle(_translate("cockomat", "Cock-o-mat"))
         self.listDrinkSelection.setSortingEnabled(True)
-        self.listDrinkDetails.setSortingEnabled(True)
+        # self.listDrinkDetails.setSortingEnabled(True)
         self.pbOptions.setText(_translate("cockomat", "x"))
         self.pbPourDrink.setText(_translate("cockomat", "Go to Work"))
         self.cmbTypes.setItemText(0, _translate("cockomat", "-"))
