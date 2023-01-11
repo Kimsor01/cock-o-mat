@@ -1,18 +1,16 @@
 import json
-import pprint
-
 from booze import mixes
 
 
 class cockmixer:
     def __init__(self):
-        self.running = False  # what is dis for?
+        # self.running = False  # what is dis for?
 
         #  setup screen, pins, leds etc.
         self.valve_configuration = self.readValveConfig()
+        self.drinkStats = self.readStats()
         self.availDrinks = []
         self.filterMixes()
-        self.drinkStats = self.readStats()
         # pin.setup(self.valve_configuration[valve]["pin"],pin.out, initial = pin.high)
 
     def shutdown(self):
@@ -45,10 +43,7 @@ class cockmixer:
                         presentIng += 1
             if presentIng == len(ingred.keys()):
                 self.availDrinks.append(i)
-        # with open("drinkstats.json", "w")as jsonFile:
-        #     for d in self.availDrinks:
-        #         drinkstat = {"name": d["name"], "quantity": 0, "doubled": 0}
-        #         json.dump(drinkstat, jsonFile)
+        self.sortDrinksByStat()
 
     def GoToWork(self, drink, aua):
         for i in self.availDrinks:
@@ -72,3 +67,12 @@ class cockmixer:
                 if aua:
                     self.drinkStats[i]["doubled"] += 1
                 print(self.drinkStats[i])
+
+    def sortDrinksByStat(self):
+        p = {}
+        for d in self.drinkStats.keys():
+            for i in self.availDrinks:
+                if d == i["name"]:
+                    p[d] = self.drinkStats[d]["quantity"]
+        return sorted(p.items(), key=lambda x: x[1], reverse=True)
+

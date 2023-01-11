@@ -12,15 +12,28 @@ class controller:
             if self.window.cmbTypes.findText(i["type"]) != -1:
                 continue
             self.window.cmbTypes.addItem(i["type"])
+        self.window.cmbTypes.addItem("Top 5 😍")
+        self.window.cmbTypes.addItem("Low 5 🤮")
         self.window.cmbTypes.model().sort(0)
 
     def filterList(self):
         self.window.listDrinkSelection.clear()
         self.window.listDrinkDetails.clear()
         self.window.labelDrink.clear()
+        self.window.listDrinkSelection.setSortingEnabled(True)
         if self.window.cmbTypes.currentText() == "-":
             for i in self.cmix.availDrinks:
                 self.window.listDrinkSelection.addItem(i["name"])
+        elif self.window.cmbTypes.currentText() == "Top 5 😍":
+            sortedlist = self.cmix.sortDrinksByStat()
+            for g in range(0, 5):
+                self.window.listDrinkSelection.setSortingEnabled(False)
+                self.window.listDrinkSelection.addItem(sortedlist[g][0])
+        elif self.window.cmbTypes.currentText() == "Low 5 🤮":
+            sortedlist = self.cmix.sortDrinksByStat()
+            for g in range(-6, -1):
+                self.window.listDrinkSelection.setSortingEnabled(False)
+                self.window.listDrinkSelection.addItem(sortedlist[g][0])
         else:
             for i in self.cmix.availDrinks:
                 if i["type"] == self.window.cmbTypes.currentText():
