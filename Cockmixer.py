@@ -21,18 +21,18 @@ class cockmixer:
 
     @staticmethod
     def readValveConfig():
-        return json.load(open('valve_config.json'))
+        return json.load(open('JSON/valve_config.json'))
 
     @staticmethod
     def readStats():
-        return json.load(open('drinkstats.json'))
+        return json.load(open('JSON/drinkstats.json'))
 
     def writeValveConfig(self):
-        with open("valve_config.json", "w") as jsonFile:
+        with open("JSON/valve_config.json", "w") as jsonFile:
             json.dump(self.valve_configuration, jsonFile)
 
     def writeStats(self):
-        with open("drinkstats.json", "w") as jsonFile:
+        with open("JSON/drinkstats.json", "w") as jsonFile:
             json.dump(self.drinkStats, jsonFile)
 
     def filterMixes(self):
