@@ -128,5 +128,5 @@ class Ui_cockomat(object):
         self.pbFart.setText(_translate("cockomat", "Fart"))
         self.pbRandom.setText(_translate("cockomat", "Zufall"))
         self.pbShowAll.setText(_translate("cockomat", "Alle"))
-        self.labelDrink.setText(_translate("cockomat", "Tequilaggg"))
-        self.cbAua.setText(_translate("cockomat", "extra Umdrehungen"))
+        self.labelDrink.setText(_translate("cockomat", "💀"))
+        self.cbAua.setText(_translate("cockomat", "💀Double Trouble💀"))

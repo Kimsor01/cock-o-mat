@@ -4,7 +4,7 @@ from qtpy import QtWidgets
 from Controller import controller
 
 
-def main2():
+def main():
     app = QtWidgets.QApplication(sys.argv)
     window = MainWindow()
     window.show()
@@ -18,4 +18,4 @@ def main2():
 
 
 if __name__ == "__main__":
-    main2()
+    main()
