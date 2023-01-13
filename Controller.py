@@ -1,10 +1,15 @@
+import os
+from random import randrange
+import threading
 from booze import bottles
+from playsound import playsound
 
 
-class controller:
+class Controller:
     def __init__(self, window, cmix):
         self.window = window
         self.cmix = cmix
+        self.cwd = os.getcwd()
 
     def setupControls(self):
         for i in self.cmix.availDrinks:
@@ -12,9 +17,12 @@ class controller:
             if self.window.cmbTypes.findText(i["type"]) != -1:
                 continue
             self.window.cmbTypes.addItem(i["type"])
+        self.window.listDrinkSelection.setCurrentRow(0)
         self.window.cmbTypes.addItem("Top 5 😍")
         self.window.cmbTypes.addItem("Low 5 🤮")
         self.window.cmbTypes.model().sort(0)
+        threading.Thread(target=playsound, args=(self.cwd + "/memes/sounds/okletsgo.mp3", "block=False"),
+                         daemon=True).start()
 
     def filterList(self):
         self.window.listDrinkSelection.clear()
@@ -25,11 +33,17 @@ class controller:
             for i in self.cmix.availDrinks:
                 self.window.listDrinkSelection.addItem(i["name"])
         elif self.window.cmbTypes.currentText() == "Top 5 😍":
+            if randrange(5) == 1:
+                threading.Thread(target=playsound, args=(self.cwd + "/memes/sounds/yeay.mp3", "block=False"),
+                                 daemon=True).start()
             sortedlist = self.cmix.sortDrinksByStat()
             for g in range(0, 5):
                 self.window.listDrinkSelection.setSortingEnabled(False)
                 self.window.listDrinkSelection.addItem(sortedlist[g][0])
         elif self.window.cmbTypes.currentText() == "Low 5 🤮":
+            if randrange(5) == 1:
+                threading.Thread(target=playsound, args=(self.cwd + "/memes/sounds/puke.mp3", "block=False"),
+                                 daemon=True).start()
             sortedlist = self.cmix.sortDrinksByStat()
             for g in range(-6, -1):
                 self.window.listDrinkSelection.setSortingEnabled(False)
@@ -55,6 +69,8 @@ class controller:
         self.window.cbAua.setChecked(False)
         lines = []
         clicked = self.window.listDrinkSelection.currentItem()
+        if clicked is None:
+            return
         name = clicked.text()
         for i in self.cmix.availDrinks:
             if name == i["name"]:
@@ -65,7 +81,7 @@ class controller:
                         if b["value"] == ing:
                             line = b["name"] + ": " + str(ingredients[ing]) + "ml"
                             lines.append(line)
-                            #self.window.listDrinkDetails.addItem(line)
+                            # self.window.listDrinkDetails.addItem(line)
         for line in sorted(lines):
             self.window.listDrinkDetails.addItem(line)
         self.window.listDrinkDetails.addItem("")
@@ -78,8 +94,8 @@ class controller:
 
     def updateDetails(self, drink):
         rows = self.window.listDrinkDetails.count()
-        self.window.listDrinkDetails.takeItem(rows-1)
-        self.window.listDrinkDetails.takeItem(rows-2)
+        self.window.listDrinkDetails.takeItem(rows - 1)
+        self.window.listDrinkDetails.takeItem(rows - 2)
         for d in self.cmix.drinkStats.keys():
             if d == drink:
                 line = "Bestellungen: " + str(self.cmix.drinkStats[d]["quantity"])
@@ -92,3 +108,15 @@ class controller:
         aua = self.window.cbAua.isChecked()
         self.cmix.GoToWork(drink, aua)
         self.updateDetails(drink)
+
+    def fart(self):
+        if randrange(100) == 1:
+            threading.Thread(target=playsound, args=(self.cwd + "/memes/sounds/diarrhea.mp3", "block=False"),
+                             daemon=True).start()
+        else:
+            threading.Thread(target=playsound, args=(self.cwd + "/memes/sounds/fart{}.mp3".format(randrange(3)),
+                             "block=False"), daemon=True).start()
+
+    def selectRandom(self):
+        x = randrange(len(self.cmix.availDrinks))
+        self.window.listDrinkSelection.setCurrentRow(x)
