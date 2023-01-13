@@ -1,12 +1,19 @@
+import os
+from random import randrange
+import threading
 from booze import bottles
+from playsound import playsound
 
 
-class controller:
+class Controller:
     def __init__(self, window, cmix):
         self.window = window
         self.cmix = cmix
+        self.cwd = os.getcwd()
 
     def setupControls(self):
+        threading.Thread(target=playsound, args=(os.getcwd() + "/memes/sounds/okletsgo.mp3", "block=False"),
+                         daemon=True).start()
         for i in self.cmix.availDrinks:
             self.window.listDrinkSelection.addItem(i["name"])
             if self.window.cmbTypes.findText(i["type"]) != -1:
@@ -65,7 +72,7 @@ class controller:
                         if b["value"] == ing:
                             line = b["name"] + ": " + str(ingredients[ing]) + "ml"
                             lines.append(line)
-                            #self.window.listDrinkDetails.addItem(line)
+                            # self.window.listDrinkDetails.addItem(line)
         for line in sorted(lines):
             self.window.listDrinkDetails.addItem(line)
         self.window.listDrinkDetails.addItem("")
@@ -78,8 +85,8 @@ class controller:
 
     def updateDetails(self, drink):
         rows = self.window.listDrinkDetails.count()
-        self.window.listDrinkDetails.takeItem(rows-1)
-        self.window.listDrinkDetails.takeItem(rows-2)
+        self.window.listDrinkDetails.takeItem(rows - 1)
+        self.window.listDrinkDetails.takeItem(rows - 2)
         for d in self.cmix.drinkStats.keys():
             if d == drink:
                 line = "Bestellungen: " + str(self.cmix.drinkStats[d]["quantity"])
@@ -92,3 +99,14 @@ class controller:
         aua = self.window.cbAua.isChecked()
         self.cmix.GoToWork(drink, aua)
         self.updateDetails(drink)
+
+    def fart(self):
+        try:
+            playsound(self.cwd + "/memes/sounds/fart.mp3")
+        except Exception:
+            pass
+
+    def selectRandom(self):
+        x = randrange(len(self.cmix.availDrinks))
+        self.window.listDrinkSelection.setCurrentRow(x)
+
