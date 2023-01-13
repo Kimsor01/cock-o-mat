@@ -12,16 +12,17 @@ class Controller:
         self.cwd = os.getcwd()
 
     def setupControls(self):
-        threading.Thread(target=playsound, args=(os.getcwd() + "/memes/sounds/okletsgo.mp3", "block=False"),
-                         daemon=True).start()
         for i in self.cmix.availDrinks:
             self.window.listDrinkSelection.addItem(i["name"])
             if self.window.cmbTypes.findText(i["type"]) != -1:
                 continue
             self.window.cmbTypes.addItem(i["type"])
+        self.window.listDrinkSelection.setCurrentRow(0)
         self.window.cmbTypes.addItem("Top 5 😍")
         self.window.cmbTypes.addItem("Low 5 🤮")
         self.window.cmbTypes.model().sort(0)
+        threading.Thread(target=playsound, args=(self.cwd + "/memes/sounds/okletsgo.mp3", "block=False"),
+                         daemon=True).start()
 
     def filterList(self):
         self.window.listDrinkSelection.clear()
@@ -32,11 +33,17 @@ class Controller:
             for i in self.cmix.availDrinks:
                 self.window.listDrinkSelection.addItem(i["name"])
         elif self.window.cmbTypes.currentText() == "Top 5 😍":
+            if randrange(5) == 1:
+                threading.Thread(target=playsound, args=(self.cwd + "/memes/sounds/yeay.mp3", "block=False"),
+                                 daemon=True).start()
             sortedlist = self.cmix.sortDrinksByStat()
             for g in range(0, 5):
                 self.window.listDrinkSelection.setSortingEnabled(False)
                 self.window.listDrinkSelection.addItem(sortedlist[g][0])
         elif self.window.cmbTypes.currentText() == "Low 5 🤮":
+            if randrange(5) == 1:
+                threading.Thread(target=playsound, args=(self.cwd + "/memes/sounds/puke.mp3", "block=False"),
+                                 daemon=True).start()
             sortedlist = self.cmix.sortDrinksByStat()
             for g in range(-6, -1):
                 self.window.listDrinkSelection.setSortingEnabled(False)
@@ -62,6 +69,8 @@ class Controller:
         self.window.cbAua.setChecked(False)
         lines = []
         clicked = self.window.listDrinkSelection.currentItem()
+        if clicked is None:
+            return
         name = clicked.text()
         for i in self.cmix.availDrinks:
             if name == i["name"]:
@@ -101,12 +110,13 @@ class Controller:
         self.updateDetails(drink)
 
     def fart(self):
-        try:
-            playsound(self.cwd + "/memes/sounds/fart.mp3")
-        except Exception:
-            pass
+        if randrange(100) == 1:
+            threading.Thread(target=playsound, args=(self.cwd + "/memes/sounds/diarrhea.mp3", "block=False"),
+                             daemon=True).start()
+        else:
+            threading.Thread(target=playsound, args=(self.cwd + "/memes/sounds/fart{}.mp3".format(randrange(3)),
+                             "block=False"), daemon=True).start()
 
     def selectRandom(self):
         x = randrange(len(self.cmix.availDrinks))
         self.window.listDrinkSelection.setCurrentRow(x)
-
