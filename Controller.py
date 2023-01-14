@@ -115,8 +115,43 @@ class Controller:
                              daemon=True).start()
         else:
             threading.Thread(target=playsound, args=(self.cwd + "/memes/sounds/fart{}.mp3".format(randrange(3)),
-                             "block=False"), daemon=True).start()
+                                                     "block=False"), daemon=True).start()
 
     def selectRandom(self):
         x = randrange(len(self.cmix.availDrinks))
         self.window.listDrinkSelection.setCurrentRow(x)
+
+    def doubleUp(self):
+        if self.window.cbAua.isChecked() is False:
+            self.showDetails()
+        else:
+            self.window.listDrinkDetails.clear()
+            lines = []
+            clicked = self.window.listDrinkSelection.currentItem()
+            if clicked is None:
+                return
+            name = clicked.text()
+            for i in self.cmix.availDrinks:
+                if name == i["name"]:
+                    self.window.labelDrink.setText(i["name"])
+                    ingredients = {"ingredients": i["ingredients"]}["ingredients"]
+                    for ing in ingredients.keys():
+                        count = 0
+                        for b in bottles:
+                            if b["value"] == ing:
+                                amount = ingredients[ing]
+                                if count < 6:
+                                    amount = amount * 2
+                                line = b["name"] + ": " + str(amount) + "ml"
+                                lines.append(line)
+                                # self.window.listDrinkDetails.addItem(line)
+                            count += 1
+            for line in sorted(lines):
+                self.window.listDrinkDetails.addItem(line)
+            self.window.listDrinkDetails.addItem("")
+            for d in self.cmix.drinkStats.keys():
+                if d == name:
+                    line = "Bestellungen: " + str(self.cmix.drinkStats[d]["quantity"])
+                    self.window.listDrinkDetails.addItem(line)
+                    line = "davon mit extra Umdrehungen: " + str(self.cmix.drinkStats[d]["doubled"])
+                    self.window.listDrinkDetails.addItem(line)
