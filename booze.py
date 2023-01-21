@@ -254,5 +254,10 @@ mixes = [
         "name": "Vodka Sunrise",
         "ingredients": {"vodka": 40, "teq": 30, "osaft": 60, "grena": 10},
         "type": "Langtrink"
+    },
+    {
+        "name": "Tequila Sunrise",
+        "ingredients": {"teq": 40, "osaft": 150, "grena": 10},
+        "type": "Langtrink"
     }
 ]
