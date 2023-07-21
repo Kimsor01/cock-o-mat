@@ -1,0 +1,3 @@
+C:/Users/David/PycharmProjects/cock-o-mat/build-ui-Desktop_Qt_6_4_1_MinGW_64_bit-Profile/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_47295.dir
+C:/Users/David/PycharmProjects/cock-o-mat/build-ui-Desktop_Qt_6_4_1_MinGW_64_bit-Profile/CMakeFiles/CMakeTmp/CMakeFiles/edit_cache.dir
+C:/Users/David/PycharmProjects/cock-o-mat/build-ui-Desktop_Qt_6_4_1_MinGW_64_bit-Profile/CMakeFiles/CMakeTmp/CMakeFiles/rebuild_cache.dir

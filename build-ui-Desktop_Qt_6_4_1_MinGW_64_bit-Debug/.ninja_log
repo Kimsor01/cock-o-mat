@@ -1,0 +1,7 @@
+# ninja log v5
+1	1817	6915100702559181	ui_autogen/timestamp	8f8733a4b7106f9e
+1	1817	6915100702559181	ui_autogen/mocs_compilation.cpp	8f8733a4b7106f9e
+1	1817	6915100702559181	C:/Users/David/PycharmProjects/cock-o-mat/build-ui-Desktop_Qt_6_4_1_MinGW_64_bit-Debug/ui_autogen/timestamp	8f8733a4b7106f9e
+1	1817	6915100702559181	C:/Users/David/PycharmProjects/cock-o-mat/build-ui-Desktop_Qt_6_4_1_MinGW_64_bit-Debug/ui_autogen/mocs_compilation.cpp	8f8733a4b7106f9e
+1823	4160	6915100730047854	CMakeFiles/ui.dir/main.cpp.obj	d34a0e73c6b94082
+1818	4165	6915100730087874	CMakeFiles/ui.dir/ui_autogen/mocs_compilation.cpp.obj	bb53ec1e8b4e51eb

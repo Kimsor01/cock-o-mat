@@ -1,0 +1,20 @@
+        # changing the styles a bit
+
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        font.setKerning(True)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.listDrinkSelection.setFont(font)
+        self.listDrinkDetails.setFont(font)
+        self.pbShowAll.setFont(font)
+        self.cmbTypes.setFont(font)
+        self.pbFart.setFont(font)
+        self.pbRandom.setFont(font)
+        self.pbPourDrink.setFont(font)
+        self.pbOptions.setFont(font)
+        self.cbAua.setFont(font)
+
+        cockomat.setStyleSheet(load_stylesheet(style="QDarkStyle"))
+
+        from qrainbowstyle import load_stylesheet
