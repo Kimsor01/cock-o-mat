@@ -1,4 +1,5 @@
 import os
+import time
 from random import randrange
 import threading
 from booze import bottles
@@ -6,8 +7,9 @@ from playsound import playsound
 
 
 class Controller:
-    def __init__(self, window, cmix):
-        self.window = window
+    def __init__(self, qWidget, cmix):
+        self.qWidget = qWidget  # the actual MainWindow
+        self.window = qWidget.ui  # despite the name only the UI components, to lazy to refactor
         self.cmix = cmix
         self.cwd = os.getcwd()
 
@@ -21,8 +23,8 @@ class Controller:
         self.window.cmbTypes.addItem("Top 5 😍")
         self.window.cmbTypes.addItem("Low 5 🤮")
         self.window.cmbTypes.model().sort(0)
-        threading.Thread(target=playsound, args=(self.cwd + "/memes/sounds/okletsgo.mp3", "block=False"),
-                         daemon=True).start()
+        # threading.Thread(target=playsound, args=(self.cwd + "/memes/sounds/okletsgo.mp3", "block=False"),
+        #                  daemon=True).start()
 
     def filterList(self):
         self.window.listDrinkSelection.clear()
@@ -106,8 +108,26 @@ class Controller:
     def pour(self):
         drink = self.window.labelDrink.text()
         aua = self.window.cbAua.isChecked()
+        self.enableLoadingBar(True)
         self.cmix.GoToWork(drink, aua)
+        self.enableLoadingBar(False)
         self.updateDetails(drink)
+
+    def enableLoadingBar(self, mode: bool):
+        # toggled hide() bei allen controlls entsprechend dem übergebenen boolean wert
+        # die loadingbar wird entgegen gesetzt getoggled
+        self.window.listDrinkSelection.setHidden(mode)
+        self.window.listDrinkDetails.setHidden(mode)
+        self.window.pbOptions.setHidden(mode)
+        self.window.pbPourDrink.setHidden(mode)
+        self.window.cmbTypes.setHidden(mode)
+        self.window.pbFart.setHidden(mode)
+        self.window.pbRandom.setHidden(mode)
+        self.window.pbShowAll.setHidden(mode)
+        self.window.labelDrink.setHidden(mode)
+        self.window.cbAua.setHidden(mode)
+        self.window.ldBar.setHidden(not mode)
+        self.qWidget.repaint()  # repaint not recommended but necessary as update is put in q until back in main thread
 
     def fart(self):
         if randrange(100) == 1:
@@ -115,8 +135,84 @@ class Controller:
                              daemon=True).start()
         else:
             threading.Thread(target=playsound, args=(self.cwd + "/memes/sounds/fart{}.mp3".format(randrange(3)),
-                             "block=False"), daemon=True).start()
+                                                     "block=False"), daemon=True).start()
 
     def selectRandom(self):
         x = randrange(len(self.cmix.availDrinks))
         self.window.listDrinkSelection.setCurrentRow(x)
+
+    def doubleUp(self):
+        if self.window.cbAua.isChecked() is False:
+            self.showDetails()
+        else:
+            self.window.listDrinkDetails.clear()
+            lines = []
+            clicked = self.window.listDrinkSelection.currentItem()
+            if clicked is None:
+                return
+            name = clicked.text()
+            for i in self.cmix.availDrinks:
+                if name == i["name"]:
+                    self.window.labelDrink.setText(i["name"])
+                    ingredients = {"ingredients": i["ingredients"]}["ingredients"]
+                    for ing in ingredients.keys():
+                        count = 0
+                        for b in bottles:
+                            if b["value"] == ing:
+                                amount = ingredients[ing]
+                                if count < 6:
+                                    amount = amount * 2
+                                line = b["name"] + ": " + str(amount) + "ml"
+                                lines.append(line)
+                                # self.window.listDrinkDetails.addItem(line)
+                            count += 1
+            for line in sorted(lines):
+                self.window.listDrinkDetails.addItem(line)
+            self.window.listDrinkDetails.addItem("")
+            for d in self.cmix.drinkStats.keys():
+                if d == name:
+                    line = "Bestellungen: " + str(self.cmix.drinkStats[d]["quantity"])
+                    self.window.listDrinkDetails.addItem(line)
+                    line = "davon mit extra Umdrehungen: " + str(self.cmix.drinkStats[d]["doubled"])
+                    self.window.listDrinkDetails.addItem(line)
+
+    def getRecipes(self):
+        try:
+            os.remove("C:/void/CocktailRezepte.txt")
+        except OSError:
+            pass
+        with open("C:/void/CocktailRezepte.txt", "a") as file:
+            clicked = self.window.listDrinkSelection.currentItem()
+            if clicked is None:
+                if self.window.cmbTypes.currentText() == "-":
+                    for i in self.cmix.availDrinks:
+                        if i["type"] == self.window.cmbTypes.currentText():
+                            file.write(i["name"] + "\n")
+                            ingredients = {"ingredients": i["ingredients"]}["ingredients"]
+                            for ing in ingredients.keys():
+                                for b in bottles:
+                                    if b["value"] == ing:
+                                        file.write("\t" + b["name"] + ": " + str(ingredients[ing]) + "ml" + "\n")
+                            file.write("\n")
+                else:
+                    for i in self.cmix.availDrinks:
+                        if i["type"] == self.window.cmbTypes.currentText():
+                            file.write(i["name"] + "\n")
+                            ingredients = {"ingredients": i["ingredients"]}["ingredients"]
+                            for ing in ingredients.keys():
+                                for b in bottles:
+                                    if b["value"] == ing:
+                                        file.write("\t" + b["name"] + ": " + str(ingredients[ing]) + "ml" + "\n")
+                            file.write("\n")
+            else:
+                name = clicked.text()
+                for i in self.cmix.availDrinks:
+                    if name == i["name"]:
+                        file.write(name + "\n")
+                        ingredients = {"ingredients": i["ingredients"]}["ingredients"]
+                        for ing in ingredients.keys():
+                            for b in bottles:
+                                if b["value"] == ing:
+                                    file.write("\t" + b["name"] + ": " + str(ingredients[ing]) + "ml" + "\n")
+                        file.write("\n")
+        file.close()

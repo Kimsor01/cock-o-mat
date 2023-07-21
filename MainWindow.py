@@ -1,5 +1,4 @@
 from PyQt5.QtWidgets import QWidget, QMessageBox
-
 from Cockmixer import cockmixer
 from ui.cock_ui import Ui_cockomat
 

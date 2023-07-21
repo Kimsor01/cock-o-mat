@@ -1,1 +1,186 @@
-{"A Kick in the Crotch": {"quantity": 0, "doubled": 0}, "Ananascocktail": {"quantity": 0, "doubled": 0}, "Rum Cola": {"quantity": 0, "doubled": 0}, "Black Thunder": {"quantity": 0, "doubled": 0}, "Blue Lagoon": {"quantity": 0, "doubled": 0}, "Blue Tequila": {"quantity": 0, "doubled": 0}, "Cape Cod": {"quantity": 0, "doubled": 0}, "Vodka Cola": {"quantity": 0, "doubled": 0}, "Emerald Dream": {"quantity": 0, "doubled": 0}, "Finnish Virgin": {"quantity": 0, "doubled": 0}, "Fireman's Sour": {"quantity": 0, "doubled": 0}, "Fuzzy Navel": {"quantity": 0, "doubled": 0}, "Green Devil": {"quantity": 0, "doubled": 0}, "Green Eyes": {"quantity": 0, "doubled": 0}, "Green Pineapple": {"quantity": 0, "doubled": 0}, "Gr\u00c3\u00bcne Witwe": {"quantity": 0, "doubled": 0}, "Hund und Katze": {"quantity": 0, "doubled": 0}, "Madras": {"quantity": 0, "doubled": 0}, "Mars Explosion": {"quantity": 0, "doubled": 0}, "Mexican Screwdriver": {"quantity": 0, "doubled": 0}, "Monkey Wrench": {"quantity": 0, "doubled": 0}, "Pacific Sunrise": {"quantity": 0, "doubled": 0}, "Peach Sling": {"quantity": 0, "doubled": 0}, "Pink Pussycat": {"quantity": 0, "doubled": 0}, "Purple Rain": {"quantity": 0, "doubled": 0}, "Revolicion": {"quantity": 0, "doubled": 0}, "Rum Orange": {"quantity": 0, "doubled": 0}, "Russian Flag": {"quantity": 0, "doubled": 0}, "Save Drive To Me": {"quantity": 0, "doubled": 0}, "Schicksalsschlag": {"quantity": 0, "doubled": 0}, "Screwdriver": {"quantity": 0, "doubled": 0}, "Sex on the Beach V1": {"quantity": 0, "doubled": 0}, "Sex on the Beach V2": {"quantity": 0, "doubled": 0}, "Sex on the Beach V3": {"quantity": 0, "doubled": 0}, "Sex on the Beach V4": {"quantity": 0, "doubled": 0}, "Sex on the Beach V5": {"quantity": 0, "doubled": 0}, "Sex on the Beach V6": {"quantity": 0, "doubled": 0}, "Soft Poison": {"quantity": 0, "doubled": 0}, "Spooky Juice": {"quantity": 0, "doubled": 0}, "Sunset": {"quantity": 0, "doubled": 0}, "Sweety": {"quantity": 0, "doubled": 0}, "Tequila": {"quantity": 0, "doubled": 0}, "The Waikiki": {"quantity": 0, "doubled": 0}, "Vodka Cranberry": {"quantity": 0, "doubled": 0}, "Vokda Gimlet": {"quantity": 0, "doubled": 0}, "Vodka Sunrise": {"quantity": 0, "doubled": 0}}
+{
+  "A Kick in the Crotch": {
+    "quantity": 3,
+    "doubled": 1
+  },
+  "Ananascocktail": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Rum Cola": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Black Thunder": {
+    "quantity": 4,
+    "doubled": 0
+  },
+  "Blue Lagoon": {
+    "quantity": 3,
+    "doubled": 0
+  },
+  "Blue Tequila": {
+    "quantity": 2,
+    "doubled": 0
+  },
+  "Cape Cod": {
+    "quantity": 4,
+    "doubled": 0
+  },
+  "Vodka Cola": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Emerald Dream": {
+    "quantity": 5,
+    "doubled": 0
+  },
+  "Finnish Virgin": {
+    "quantity": 1,
+    "doubled": 0
+  },
+  "Fireman's Sour": {
+    "quantity": 1,
+    "doubled": 0
+  },
+  "Fuzzy Navel": {
+    "quantity": 1,
+    "doubled": 0
+  },
+  "Green Devil": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Green Eyes": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Green Pineapple": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Gr\u00c3\u00bcne Witwe": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Hund und Katze": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Madras": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Mars Explosion": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Mexican Screwdriver": {
+    "quantity": 1,
+    "doubled": 0
+  },
+  "Monkey Wrench": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Pacific Sunrise": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Peach Sling": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Pink Pussycat": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Purple Rain": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Revolicion": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Rum Orange": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Russian Flag": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Save Drive To Me": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Schicksalsschlag": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Screwdriver": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Sex on the Beach V1": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Sex on the Beach V2": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Sex on the Beach V3": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Sex on the Beach V4": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Sex on the Beach V5": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Sex on the Beach V6": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Soft Poison": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Spooky Juice": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Sunset": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Sweety": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Tequila": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "The Waikiki": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Vodka Cranberry": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Vokda Gimlet": {
+    "quantity": 0,
+    "doubled": 0
+  },
+  "Vodka Sunrise": {
+    "quantity": 0,
+    "doubled": 0
+  }
+}
