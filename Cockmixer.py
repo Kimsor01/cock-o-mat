@@ -1,4 +1,7 @@
 import json
+import threading
+import time
+
 from booze import mixes
 
 
@@ -46,6 +49,7 @@ class cockmixer:
         self.sortDrinksByStat()
 
     def GoToWork(self, drink, aua):
+        time.sleep(5)
         for i in self.availDrinks:
             if i["name"] == drink:
                 ingredients = {"ingredients": i["ingredients"]}["ingredients"]
