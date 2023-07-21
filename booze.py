@@ -16,10 +16,11 @@ bottles = [
     {"name": "Cranberrysaft", "value": "cran"}
 ]
 
-# ALL MIXES ARE TO BE TESTED FOR TASTE AND AMOUNT
+# TODO: ALL MIXES ARE TO BE TESTED FOR TASTE AND AMOUNT
 mixes = [
     # ingredient amount in "ml"
-    # longdrinks should be around 350-400ml
+    # all mixes should be 400ml total, expect shots
+    # 400ml perfect amount for usual redcup
     # Langtrink = Longdrink, SchwanzSchwanz = Cocktails, Fahrer = Alkoholfrei, Shooter = ???
 
     # recipes might use dashes = 1 ml, gotta try it
