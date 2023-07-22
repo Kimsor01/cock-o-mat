@@ -2,10 +2,13 @@ import json
 import threading
 import time
 
+from Controller import Controller
 from booze import mixes
 
 
 class cockmixer:
+    kontrollörres: Controller
+
     def __init__(self):
         # self.running = False  # what is dis for?
 
@@ -49,7 +52,6 @@ class cockmixer:
         self.sortDrinksByStat()
 
     def GoToWork(self, drink, aua):
-        time.sleep(5)
         for i in self.availDrinks:
             if i["name"] == drink:
                 ingredients = {"ingredients": i["ingredients"]}["ingredients"]
@@ -60,8 +62,14 @@ class cockmixer:
                             amount = ingredients[ing]
                             if aua and int(v.isdigit()) < 7:
                                 amount = amount * 2
+                            # TODO: actual pouring as thread, join that shit and be happy
+                            prog = threading.Thread(target=self.kontrollörres.progressBar, args=(amount,),
+                                                    daemon=True)
+                            prog.start()
+                            prog.join()
                             print(v)
-                            print("Pin " + str(self.valve_configuration[v]["pin"]) + " - " + str(amount) + "ml - " + ing)
+                            print(
+                                "Pin " + str(self.valve_configuration[v]["pin"]) + " - " + str(amount) + "ml - " + ing)
         self.setStats(drink, aua)
 
     def setStats(self, drink, aua):
@@ -79,4 +87,3 @@ class cockmixer:
                 if d == i["name"]:
                     p[d] = self.drinkStats[d]["quantity"]
         return sorted(p.items(), key=lambda x: x[1], reverse=True)
-

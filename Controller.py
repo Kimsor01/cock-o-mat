@@ -127,7 +127,19 @@ class Controller:
         self.window.labelDrink.setHidden(mode)
         self.window.cbAua.setHidden(mode)
         self.window.ldBar.setHidden(not mode)
+        self.window.ldBar.reset()
         self.qWidget.repaint()  # repaint not recommended but necessary as update is put in q until back in main thread
+
+    def progressBar(self, amount: int):
+        cur = self.window.ldBar.value()
+        total = cur + amount
+        while cur < total:
+            if cur + 5 >= total:
+                self.window.ldBar.setValue(total)
+                return
+            self.window.ldBar.setValue(cur + 5)  # TODO: replace 5 with actual output per sec
+            time.sleep(0.5)
+            cur = self.window.ldBar.value()
 
     def fart(self):
         if randrange(100) == 1:

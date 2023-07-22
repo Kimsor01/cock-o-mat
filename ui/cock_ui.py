@@ -93,11 +93,11 @@ class Ui_cockomat(object):
         self.cbAua.setObjectName("cbAua")
         self.ldBar = QtWidgets.QProgressBar(self.centralwidget)
         self.ldBar.setAlignment(QtCore.Qt.AlignHCenter)
-        self.ldBar.setFormat("%v")
+        self.ldBar.setMinimum(0)
+        self.ldBar.setMaximum(400)
         self.ldBar.setObjectName("ldBar")
         self.ldBar.setFixedSize(600, 80)
         self.ldBar.move(100, 200)
-        # TODO: show() to be replaced with hide() on roll out
         self.ldBar.hide()
 
         # changing the styles a bit
